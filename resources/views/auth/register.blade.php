@@ -20,7 +20,7 @@
             <h5>Register with</h5>
           </div>
           <div class="card-body">
-            <form role="form" action="{{ route('auth.store') }}" method="POST">
+            <form role="form" action="{{ route('register.store') }}" method="POST">
               @csrf
               <div class="mb-3">
                 <input type="text" class="form-control" placeholder="Name" aria-label="Name" name="name" value="{{old('name')}}">
@@ -55,7 +55,7 @@
               <div class="text-center">
                 <button class="btn bg-gradient-dark w-100 my-4 mb-2" type="submit">Sign up</button>
               </div>
-              <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{route('auth.index')}}" class="text-dark font-weight-bolder">Sign in</a></p>
+              <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{route('login')}}" class="text-dark font-weight-bolder">Sign in</a></p>
             </form>
           </div>
         </div>

@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +20,8 @@ class HomeController extends Controller
     public function index()
     {
         return view('home.index', [
-            'title' => 'DnG Store | Dashboard',
-            'open' => true
+            'title' => 'DnG Store',
+            'user' => DB::table('users')->where('email', session('email'))->first()
         ]);
     }
 
@@ -72,6 +78,15 @@ class HomeController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function profile($id)
+    {
+        return view('home.profile', [
+            'title' => 'DnG Store | Profile',
+            'role' => ['Owner', 'Admin', 'Driver', 'Reseller', 'Customers'],
+            'user' => DB::table('users')->where('id', $id)->first()
+        ]);
     }
 
     /**

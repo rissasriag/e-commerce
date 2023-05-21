@@ -13,37 +13,28 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-5 text-center mx-auto">
-          <h1 class="text-white mb-2 mt-5">Welcome {{ Session::get('name') }}!</h1>
+          <h1 class="text-white mb-2 mt-5">Selamat datang,</h1>
+          <h2 class="text-white mb-2">{{ Session::get('name') }}!</h2>
           <p class="text-lead text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, natus laudantium recusandae ab impedit consectetur.</p>
         </div>
       </div>
     </div>
   </div>
   <div class="container">
+    <div class="col-md col-lg col-sm">
       <div class="d-flex justify-content-center" style="flex-wrap: wrap;">
-        @for ($i = 1; $i <= 8; $i++)
-        <div class="col-md-3 col-lg-3 col-sm-3 px-3 py-3">
-          <div class="card col-md shadow-lg">
-            <div class="card-body">
-              <div class="w-50 mx-auto">
-                <img src="{{asset('assets/img/curved-images/curved-6.jpg')}}" alt="" class="img-fluid">
-              </div>
-              <p class="card-description mb-5 mt-3">
-                {{$i}}.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. In recusandae doloremque nihil...
-              </p>
-              <div class="pull-left">
-                <span>―</span>
-                Collin Marcus
-              </div>
-              <a href="javascript:;" class="text-success icon-move-right pull-right">Read More
-                <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-              </a>
-            </div>
+      @for ($i = 1; $i < 10; $i++)
+        <div class="card col-md-3 mx-1 my-1 shadow-md">
+          <img src="{{asset('assets/img/curved-images/curved-6.jpg')}}" alt="Image" class="image-fluid">
+          <div class="card-body">
+            <h3>Hello world</h3>
+            <p class="fst-italic">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos quis voluptatibus esse pariatur. A inventore tenetur, laboriosam totam facere ratione.</p>
+            <a href="#" class="text-primary">Read more &RightArrow;</a>
           </div>
-        </div>
+        </div> 
         @endfor
       </div>
+    </div>
   </div>
   {{-- Modal Notification --}}
   <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">

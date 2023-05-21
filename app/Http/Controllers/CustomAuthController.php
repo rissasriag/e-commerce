@@ -34,7 +34,11 @@ class CustomAuthController extends Controller
             'password' => 'required',
         ]);
         if (Auth::attempt($credentials)) {
-            session(['email' => $request->email, 'name' => $user->name]);
+            if ($user->role < 4) {
+                session(['id' => $user->id, 'email' => $request->email, 'name' => $user->name]);
+                return redirect()->intended('admin')->with(['message' => 'Selamat datang di DnG Store!', 'type' => 'Login', 'alert' => 'Notifikasi Sukses!', 'class' => 'success']);
+            }
+            session(['id' => $user->id, 'email' => $request->email, 'name' => $user->name]);
             return redirect()->intended('home')->with(['message' => 'Selamat datang di DnG Store!', 'type' => 'Login', 'alert' => 'Notifikasi Sukses!', 'class' => 'success']);
         }
         return redirect()->back()->with(['message' => 'Email atau password salah, harap login kembali!', 'type' => 'Credentials Error', 'alert' => 'Notifikasi Gagal!', 'class' => 'success']);
@@ -49,24 +53,18 @@ class CustomAuthController extends Controller
             'password' => 'required|min:6',
             'repeat-password' => 'required|same:password|required_with:password'
         ]);
-        $this->insert($request->all());
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
         $session = [
             'message' => 'Berhasil membuat akun!',
             'type' => 'Insert Data',
             'alert' => 'Notifikasi Sukses!',
             'class' => 'success'
         ];
-        return redirect()->intended('home')->with($session);
-    }
-
-    public function insert(array $data)
-    {
-        session(['email' => $data['email'], 'name' => $data['name']]);
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password'])
-        ]);
+        return redirect()->intended('login')->with($session);
     }
 
     public function logout()
@@ -79,6 +77,6 @@ class CustomAuthController extends Controller
             'alert' => 'Notifikasi Sukses!',
             'class' => 'success'
         ];
-        return Redirect('auth')->with($session);
+        return Redirect()->intended('login')->with($session);
     }
 }

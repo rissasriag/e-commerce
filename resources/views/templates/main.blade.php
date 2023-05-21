@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/img/apple-icon.png')}}">
-  <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('assets/img/logos/logo.png') }}">
   <title>
     {{ $title }}
   </title>
@@ -26,8 +26,11 @@
 
 <body class="">
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg position-sticky top-0 z-index-3 w-100 shadow-none navbar-transparent bg-dark">
+  <nav class="navbar navbar-expand-lg position-sticky top-0 z-index-3 w-100 shadow-none bg-dark">
     <div class="container">
+      <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="{{route('home.index')}}">
+        DnG Store
+      </a>
       <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon mt-2">
           <span class="navbar-toggler-bar bar1"></span>
@@ -35,51 +38,33 @@
           <span class="navbar-toggler-bar bar3"></span>
         </span>
       </button>
-      <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="../pages/dashboard.html">
-        DnG Store
-      </a>
       <div class="collapse navbar-collapse" id="navigation">
-          <div class="col-lg-6 mx-auto">
-            <form action="#" method="post">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <form action="" method="post" class="d-flex align-items-center me-2">
               <div class="input-group">
-                <input class="form-control" placeholder="Search" type="text">
-                <button class="input-group-text ni ni-zoom-split-in bg-light"></button>
+                <input type="text" class="form-control" name="search">
+                <button class="input-group-text bg-secondary text-white">Cari</button>
               </div>
             </form>
-          </div>
-        {{-- <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <a class="nav-link d-flex align-items-center me-2 active" aria-current="page" href="../pages/dashboard.html">
-              <i class="fa fa-chart-pie opacity-6  me-1"></i>
-              Dashboard
-            </a>
           </li>
+        </ul>
+        <ul class="navbar-nav my-2">
           <li class="nav-item">
-            <a class="nav-link me-2" href="../pages/profile.html">
-              <i class="fa fa-user opacity-6  me-1"></i>
-              Profile
-            </a>
+            @if (Session::get('name'))  
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle mb-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{$user->name}}
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="/home/profile/{{$user->id}}">Profile</a></li>
+                <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
+              </ul>
+            </div>
+              @else
+              <a href="{{route('login')}}" class="btn btn-sm btn-secondary mb-0">Login</a>
+              @endif
           </li>
-        </ul> --}}
-        <ul class="navbar-nav d-lg-block d-none">
-            @if (Session::get('name'))
-              <li class="nav-item dropdown">
-                <button class="btn dropdown-toggle btn-sm mb-0 me-1 bg-gradient-light" data-bs-toggle="dropdown" aria-expanded="false">
-                  {{Session::get('name')}}
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
-                </ul>
-              </li>
-            @else
-            <li class="nav-item">
-              <a href="{{route('auth.index')}}" class="btn btn-sm mb-0 me-1 bg-gradient-light">
-                Login
-              </a>
-            </li>
-            @endif
         </ul>
       </div>
     </div>
