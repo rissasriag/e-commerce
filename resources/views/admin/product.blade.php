@@ -54,13 +54,13 @@
                       Edit Stok
                     </a>
                     <a href="javascript:;" class="badge badge-sm bg-gradient-warning">
-                      Edit Kategori
+                      Detail
                     </a>
                     <a href="javascript:;" class="badge badge-sm bg-gradient-warning">
-                      Edit Produk
+                      Edit 
                     </a>
                     <a href="javascript:;" class="badge badge-sm bg-gradient-danger">
-                      Hapus Produk
+                      Hapus
                     </a>
                   </td>
                 </tr>
