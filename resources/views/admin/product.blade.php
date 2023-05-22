@@ -14,14 +14,14 @@
       <div class="card z-index-2 mb-4">
         <div class="card-header pb-0">
           <a href="{{route('product.create')}}" class="btn btn-sm btn-success float-end">Tambah Data</a>
-          <h6>Products Table</h6>
+          <h6>TABEL PRODUK</h6>
         </div>
         <div class="card-body px-0 pt-0 pb-2">
           <div class="table-responsive p-0">
             <table class="table align-items-center mb-0">
               <thead>
                 <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Prodak</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Produk</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Stok</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Satuan</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga Satuan</th>
@@ -57,10 +57,10 @@
                       Edit Kategori
                     </a>
                     <a href="javascript:;" class="badge badge-sm bg-gradient-warning">
-                      Edit Prodak
+                      Edit Produk
                     </a>
                     <a href="javascript:;" class="badge badge-sm bg-gradient-danger">
-                      Hapus Prodak
+                      Hapus Produk
                     </a>
                   </td>
                 </tr>
